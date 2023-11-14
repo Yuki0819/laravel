@@ -39,7 +39,11 @@
                             </div>
                             @enderror
                         </label>
-
+                        <form method="post" action="check.php">
+                            <select name="op">
+                                <option value="---">---</option>
+                            </select>
+                        </form>
                         <button type="submit"
                             class="mt-8 p-4 bg-slate-800 text-white w-full max-w-xs hover:bg-slate-900 transition-colors">
                             追加する
@@ -114,6 +118,7 @@
             </div>
         </div>
     </main>
+
     <footer class="bg-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
             <div class="py-4 text-center">
