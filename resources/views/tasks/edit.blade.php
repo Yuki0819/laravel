@@ -7,7 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Todo</title>
 
-    @vite('resources/css/app.css')
 </head>
 
 <body class="flex flex-col min-h-[100vh]">
@@ -31,23 +30,33 @@
                             <input
                                 class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-4 pl-4 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
                                 type="text" name="task_name" value="{{ $task->name }}" />
-                            @error('task_name')
-                            <div class="mt-3">
-                                <p class="text-red-500">
-                                    {{ $message }}
-                                </p>
-                            </div>
-                            @enderror
+                            @if ($category->isNotEmpty())
+                            <form method="post" action="check.php">
+                                <select name="task_category">
+                                    <option value="---">---</option>
+                                    <option value="仕事" selected>仕事</option>
+                                    <option value="家事" selected>家事</option>
+                                    <option value="勉強" selected>勉強</option>
+                                </select>
+                                @endif
+                                <button type="submit"
+                                    class="p-4 bg-sky-800 text-white w-full max-w-xs hover:bg-sky-900 transition-colors">
+                                    編集する
+                                </button>
+                                @error('task_name')
+                                <div class="mt-3">
+                                    <p class="text-red-500">
+                                        {{ $message }}
+                                    </p>
+                                </div>
+                                @enderror
                         </label>
 
                         <div class="mt-8 w-full flex items-center justify-center gap-10">
                             <a href="/tasks" class="block shrink-0 underline underline-offset-2">
                                 戻る
                             </a>
-                            <button type="submit"
-                                class="p-4 bg-sky-800 text-white w-full max-w-xs hover:bg-sky-900 transition-colors">
-                                編集する
-                            </button>
+
                         </div>
                     </div>
 

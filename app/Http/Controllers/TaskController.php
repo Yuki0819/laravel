@@ -40,6 +40,8 @@ class TaskController extends Controller
     public function store(Request $request)
     {
 
+        
+
         $rules = [
             'task_name' => 'required|max:100',
         ];
@@ -51,12 +53,15 @@ class TaskController extends Controller
 
         //モデルをインスタンス化
         $task = new Task;
+       
 
         //モデル->カラム名 = 値 で、データを割り当てる
         $task->name = $request->input('task_name');
+        $task->category = $request->input('task_category');
 
         //データベースに保存
         $task->save();
+    
 
         //リダイレクト
         return redirect('/tasks');
@@ -113,6 +118,8 @@ class TaskController extends Controller
 
             //モデル->カラム名 = 値 で、データを割り当てる
             $task->name = $request->input('task_name');
+            $task->category = $request->input('task_category');
+
 
             //データベースに保存
             $task->save();
