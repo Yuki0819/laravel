@@ -66,10 +66,10 @@
                                 <tr>
                                     <th scope="col"
                                         class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900">
-                                        タスク</th>
+                                        tasks</th>
                                     <th scope="col"
                                         class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900">
-                                        カテゴリ</th>
+                                        categories</th>
                                     <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
                                         <span class="sr-only">Actions</span>
                                     </th>
@@ -111,11 +111,9 @@
                                                     <input type="hidden" name="status" value="{{$item->status}}">
                                                     <button type="submit"
                                                         class="bg-emerald-700 py-4 w-20 text-white md:hover:bg-emerald-800 transition-colors">完了</button>
+                                                    <a href="/tasks/{{ $item->id }}/edit/"
+                                                        class="inline-block text-center py-4 w-20 underline underline-offset-2 text-sky-600 md:hover:bg-sky-100 transition-colors">編集</a>
                                                 </form>
-                                            </div>
-                                            <div>
-                                                <a href="/tasks/{{ $item->id }}/edit/"
-                                                    class="inline-block text-center py-4 w-20 underline underline-offset-2 text-sky-600 md:hover:bg-sky-100 transition-colors">編集</a>
                                             </div>
                                             <div>
                                                 <form onsubmit="return deleteTask();" action="/tasks/{{ $item->id }}"
