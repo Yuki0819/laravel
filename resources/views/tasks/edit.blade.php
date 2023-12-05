@@ -30,15 +30,30 @@
                             <input
                                 class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-4 pl-4 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
                                 type="text" name="task_name" value="{{ $task->name }}" />
-                            @if ($category->isNotEmpty())
                             <form method="post" action="check.php">
                                 <select name="task_category">
+                                    @if($task->category == '---')
+                                    <option value="---" selected>---</option>
+                                    <option value="仕事">仕事</option>
+                                    <option value="家事">家事</option>
+                                    <option value="勉強">勉強</option>
+                                    @elseif($task->category == '仕事')
                                     <option value="---">---</option>
                                     <option value="仕事" selected>仕事</option>
+                                    <option value="家事">家事</option>
+                                    <option value="勉強">勉強</option>
+                                    @elseif($task->category == '家事')
+                                    <option value="---">---</option>
+                                    <option value="仕事">仕事</option>
                                     <option value="家事" selected>家事</option>
+                                    <option value="勉強">勉強</option>
+                                    @elseif($task->category == '勉強')
+                                    <option value="---">---</option>
+                                    <option value="仕事">仕事</option>
+                                    <option value="家事">家事</option>
                                     <option value="勉強" selected>勉強</option>
+                                    @endif
                                 </select>
-                                @endif
                                 <button type="submit"
                                     class="p-4 bg-sky-800 text-white w-full max-w-xs hover:bg-sky-900 transition-colors">
                                     編集する
